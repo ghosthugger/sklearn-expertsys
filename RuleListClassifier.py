@@ -127,8 +127,8 @@ class RuleListClassifier(BaseEstimator):
         data = list(X[:])
         #Now find frequent itemsets
         #Mine separately for each class
-        data_pos = [x for i,x in enumerate(data) if y[i]==0]
-        data_neg = [x for i,x in enumerate(data) if y[i]==1]
+        data_pos = [x for i,x in enumerate(data) if y[i]==1]
+        data_neg = [x for i,x in enumerate(data) if y[i]==0]
         assert len(data_pos)+len(data_neg) == len(data)
         try:
             itemsets = [r[0] for r in fpgrowth(data_pos,supp=self.minsupport,zmin=self._zmin,zmax=self.maxcardinality)]
